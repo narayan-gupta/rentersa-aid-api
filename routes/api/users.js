@@ -35,11 +35,12 @@ router.post('/', auth.optional, (req, res, next) => {
     });
   }
   const finalUser = new Users(user);
-
+  console.log("We have this user here")
+  console.log(finalUser)
   finalUser.setPassword(user.password);
-
+  console.log(finalUser.toAuthJson())
   return finalUser.save()
-    .then(() => res.json({ user: finalUser.toAuthJSON() })); 
+    .then(() => res.json({ user: finalUser.toAuthJson() })); 
 });
 
 //POST login route (optional, everyone has access)
